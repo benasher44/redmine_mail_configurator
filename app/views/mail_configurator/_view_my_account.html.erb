@@ -1,0 +1,41 @@
+<p id="mail_configurator_assigned_only_mail_notification">
+  <label>
+    <%= l(:label_user_mail_assigned_only_mail_notification) %>
+  </label>
+  <%= check_box_tag 'assigned_only_mail_notification', 1, user_pref[:assigned_only_mail_notification] %>
+</p>
+<p id="mail_configurator_block_mail_notification">
+  <label>
+    <%= l(:label_user_mail_block_mail_notification)%>
+  </label>
+  <%= check_box_tag 'block_mail_notification', 1, user_pref[:block_mail_notification]%>
+</p>
+<script type="text/javascript">
+  if(window.attachEvent) {
+    window.attachEvent('onload', mail_configurator_move_ui);
+  } else {
+    if(window.onload) {
+      var curronload = window.onload;
+      var newonload = function() {
+        curronload();
+        mail_configurator_move_ui();
+      };
+      window.onload = newonload;
+    } else {
+    window.onload = mail_configurator_move_ui;
+    }
+  }
+
+  function mail_configurator_move_ui()
+  {
+    box = document.getElementById('no_self_notified');
+    while (box && box.nodeName.toLowerCase() != 'div') {
+      box = box.parentNode;
+    }
+
+    if (box) {
+      box.appendChild(document.getElementById('mail_configurator_assigned_only_mail_notification'));
+      box.appendChild(document.getElementById('mail_configurator_block_mail_notification'));
+    }
+  }
+</script>

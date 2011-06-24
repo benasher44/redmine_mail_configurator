@@ -20,8 +20,7 @@ end
 
 
 # Hooks
-require 'account_view_mail_checkboxes_hook'
-#require 'project_members_view_add_col_hook'
+require 'mail_configurator_hooks.rb'
 
 Redmine::Plugin.register :redmine_mail_configurator do
   name 'Redmine Mail Configurator plugin'
